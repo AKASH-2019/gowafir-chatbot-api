@@ -1,0 +1,37 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+- intent: ask_services
+  examples: |
+    - what services do you offer?
+    - what kind of work do you do?
+    - tell me about your solutions
+    - services
+    - what can you do for me?
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+- intent: affirm
+  examples: |
+    - yes
+    - yeah
+- intent: deny
+  examples: |
+    - no
+    - never
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+- intent: mood_unhappy
+  examples: |
+    - sad
+    - unhappy
+- intent: bot_challenge
+  examples: |
+    - are you a bot?

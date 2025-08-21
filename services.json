@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "name": "Web Development",
+    "description": "Building and maintaining websites and web applications.",
+    "category": "Software",
+    "price": {
+      "starting_from": 5000,
+      "currency": "USD"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Mobile App Development",
+    "description": "Creating native and cross-platform mobile applications.",
+    "category": "Software",
+    "platforms": [
+      "iOS",
+      "Android"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Cloud Consulting",
+    "description": "Helping businesses migrate to and manage cloud infrastructure.",
+    "category": "IT Services",
+    "providers": [
+      "AWS",
+      "Azure",
+      "Google Cloud"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "UI/UX Design",
+    "description": "Designing intuitive user interfaces and experiences.",
+    "category": "Design",
+    "tools": [
+      "Figma",
+      "Adobe XD"
+    ]
+  }
+]
