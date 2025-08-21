@@ -42,5 +42,8 @@
 #  queue: queue
 
 
+# action_endpoint:
+  # url: "http://localhost:5055/webhook"
+
 action_endpoint:
-  url: "http://localhost:5055/webhook"
+  url: "http://0.0.0.0:5055/webhook"
