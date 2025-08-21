@@ -91,6 +91,7 @@ pykwalify==1.8.0
 pymongo==4.3.3
 pyparsing==3.2.3
 pyrsistent==0.20.0
+python=3.10.14
 python-crfsuite==0.9.11
 python-dateutil==2.8.2
 python-engineio==4.12.2
