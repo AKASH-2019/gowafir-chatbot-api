@@ -4,13 +4,16 @@ FROM rasa/rasa:3.6.21-py310
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy all project files into the container
-COPY . .
+# Copy the requirements file first to optimize Docker caching
+COPY requirements.txt ./
 
-# Install all the dependencies from requirements.txt
+# Install all the dependencies from your requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Run the Rasa model training when the container is built
+# Copy the rest of the project files into the container
+COPY . .
+
+# Run the Rasa model training
 RUN rasa train --force
 
 # Expose the port for the Rasa server

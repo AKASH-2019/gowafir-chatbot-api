@@ -6,7 +6,7 @@ services:
     ports:
       - "5005:5005"
     volumes:
-      - models:/app/models # This is the crucial change
+      - models:/app/models # Mount the persistent volume for the model
     command:
       - rasa
       - run
