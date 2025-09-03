@@ -1,31 +1,20 @@
-version: "3.8"
+# Use a specific Rasa base image with Python 3.10
+FROM rasa/rasa:3.6.21-py310
 
-services:
-  rasa:
-    build: .
-    ports:
-      - "5005:5005"
-    volumes:
-      - .:/app
-    command:
-      - rasa
-      - run
-      - --enable-api
-      - --cors
-      - "*"
-    environment:
-      - RASA_CORE_SERVER_PORT=5005
-      - RASA_ACTION_SERVER_PORT=5055
+# Set the working directory inside the container
+WORKDIR /app
 
-  action_server:
-    image: rasa/rasa-sdk:3.6.2
-    ports:
-      - "5055:5055"
-    volumes:
-      - ./actions:/app/actions
-    command:
-      - rasa
-      - run
-      - actions
-      - --cors
-      - "*"
+# Copy all project files into the container
+COPY . .
+
+# Install all the dependencies from requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Run the Rasa model training when the container is built
+RUN rasa train --force
+
+# Expose the port for the Rasa server
+EXPOSE 5005
+
+# Set the command to run the Rasa server
+CMD ["rasa", "run", "--enable-api", "--cors", "*"]

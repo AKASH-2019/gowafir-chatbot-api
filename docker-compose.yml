@@ -6,16 +6,19 @@ services:
     ports:
       - "5005:5005"
     volumes:
-      - .:/app
+      - models:/app/models # This is the crucial change
     command:
       - rasa
       - run
       - --enable-api
       - --cors
       - "*"
+    environment:
+      - RASA_CORE_SERVER_PORT=5005
+      - RASA_ACTION_SERVER_PORT=5055
 
   action_server:
-    image: rasa/rasa-sdk:3.0.0
+    image: rasa/rasa-sdk:3.6.2
     ports:
       - "5055:5055"
     volumes:
@@ -26,3 +29,7 @@ services:
       - actions
       - --cors
       - "*"
+
+volumes:
+  models:
+    external: true
