@@ -1,23 +1,20 @@
-# Use a specific Rasa base image with Python 3.10
-FROM rasa/rasa:3.6.21-py310
+# Use a specific Rasa base image (Python 3.10 is already bundled in official builds)
+FROM rasa/rasa:3.6.21
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the requirements file first to optimize Docker caching
+# Copy requirements first (for caching)
 COPY requirements.txt ./
-
-# Install all the dependencies from your requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the project files into the container
+# Copy project files
 COPY . .
 
-# Run the Rasa model training
+# Train model
 RUN rasa train --force
 
-# Expose the port for the Rasa server
+# Expose Rasa server port
 EXPOSE 5005
 
-# Set the command to run the Rasa server
+# Run Rasa server
 CMD ["rasa", "run", "--enable-api", "--cors", "*"]
