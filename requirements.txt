@@ -1,7 +1,6 @@
 requests
 redis
 pymongo
-psycopg2-binary
-scikit-learn
-joblib
-pandas
+slack_sdk
+twilio
+mattermostwrapper
