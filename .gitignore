@@ -1,0 +1,8 @@
+
+
+# Node artifact files
+env_rasa/
+venv_rasa/
+
+# Compiled Java class files
+# *.class
