@@ -23,10 +23,11 @@ COPY . .
 
 RUN rasa train --force
 
-RUN pip install supervisor
+# Install supervisord (Python version, lightweight)
+RUN pip install supervisord
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisord.conf
 
 EXPOSE 5005 5055
 
-CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
