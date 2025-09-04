@@ -19,15 +19,17 @@ FROM rasa/rasa:3.6.21
 
 WORKDIR /app
 
+# Copy everything
 COPY . .
 
+# Train Rasa model
 RUN rasa train --force
 
-# Install supervisord (Python version, lightweight)
-RUN pip install supervisord
-
-COPY supervisord.conf /etc/supervisord.conf
+# Copy start script
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
 
 EXPOSE 5005 5055
 
-CMD ["supervisord", "-c", "/etc/supervisord.conf"]
+CMD ["./start.sh"]
+
