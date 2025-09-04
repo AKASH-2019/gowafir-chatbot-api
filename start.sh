@@ -1,9 +1,4 @@
 #!/bin/bash
-# Start Rasa server in the background
-rasa run --enable-api --cors "*" &
-
-# Start Action server in the background
-rasa run actions --cors "*" &
-
-# Wait for any process to exit
+rasa run --enable-api --cors "*" --host 0.0.0.0 &
+rasa run actions --cors "*" --host 0.0.0.0 &
 wait -n
