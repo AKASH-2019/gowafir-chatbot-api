@@ -19,15 +19,11 @@ FROM rasa/rasa:3.6.21
 
 WORKDIR /app
 
-# Copy everything
 COPY . .
 
-# Train Rasa model
 RUN rasa train --force
 
-# Copy start script
-COPY start.sh /app/start.sh
-RUN chmod +x /app/start.sh
+COPY --chmod=755 start.sh /app/start.sh
 
 EXPOSE 5005 5055
 
